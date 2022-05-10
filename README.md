@@ -31,11 +31,14 @@ Spasi = menembak laser ke arah rintangan.
 **Tampilan Awal Game**
 ![Tampilan Awal Game](https://i.ibb.co/DWRVqVJ/doc1.png)
 
+
 **Tampilan Gameplay**
 ![Tampilan Gameplay](https://i.ibb.co/wLZStf3/doc2.png)
 
 
 ![Tampilan Gameplay laser](https://i.ibb.co/S5Yy7yk/doc3.png)
+
+
 
 **Tampilan Gameover**
 ![Tampilan Gameover](https://i.ibb.co/gTF2jGX/doc4.png)
