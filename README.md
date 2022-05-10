@@ -13,7 +13,7 @@ Permainan ini dimainkan menggunakan tombol keyboard.
 Pada awal permainan kita diperlihatkan dengan tampilan awal dari game tersebut dan kita diperintahkan untuk menekan sembarang tombol keyboard untuk memulai permainan.
 
 Tombol keyboard yang digunakan saat bermain adalah tombol W A S D atau tombol panah untuk menggerakkan pesawat.
-Selain itu tombol spasi digunakan untuk menembak.
+Selain itu tombol spasi digunakan untuk menembak rintangan atau misil.
 
 W = menggerakkan pesawat ke arah atas.
 
