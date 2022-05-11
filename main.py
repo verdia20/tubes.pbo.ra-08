@@ -7,6 +7,9 @@ from coin import Coin
 from cloud import Cloud
 from item import Item
 
+WIDTH = 800
+HEIGHT = 600
+
 class Game:
     def __init__(self):
         # player setup
@@ -40,7 +43,7 @@ class Game:
         
     def display_score(self):
         score_surf = self.game_font.render(f'Score: {self.score}', False, (64, 64, 64))
-        score_rect = score_surf.get_rect(center = ((width/2), 50))
+        score_rect = score_surf.get_rect(center = ((WIDTH/2), 50))
         screen.blit(score_surf, score_rect)
 
     def collisions_sprite(self):
@@ -67,7 +70,7 @@ class Game:
         if self.player.sprite.indicator_active:
             indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
             indicator = pygame.transform.smoothscale(indicator, (44, 30))
-            indicator_rect = indicator.get_rect(center = ((50), (height-50)))
+            indicator_rect = indicator.get_rect(center = ((50), (HEIGHT-50)))
             screen.blit(indicator, indicator_rect)
 
     def cheat(self):
@@ -87,12 +90,12 @@ class Game:
     def game_intro(self):
         self.intro_music.play()
         game_name = self.game_font.render('Aircraft: Fly Forever', False, (27,124,55))
-        game_name_rect = game_name.get_rect(center = ((width/2), 50))
+        game_name_rect = game_name.get_rect(center = ((WIDTH/2), 50))
         game_message = self.game_font.render('Press any key to start', False, (27,124,55))
-        game_message_rect = game_message.get_rect(center = ((width/2), 500))
+        game_message_rect = game_message.get_rect(center = ((WIDTH/2), 500))
         player_stand = pygame.image.load('graphics/player/intro.png').convert_alpha()
         player_stand =  pygame.transform.rotozoom(player_stand, 0, 0.45)
-        player_stand_rect = player_stand.get_rect(center = ((width/2), (height/2)))
+        player_stand_rect = player_stand.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
         run = True
         while run:
             for event in pygame.event.get():
@@ -113,13 +116,13 @@ class Game:
         self.game_over_music.play()
         player_dead = pygame.image.load('graphics/player/dead.png').convert_alpha()
         player_dead = pygame.transform.rotozoom(player_dead, 0, 0.45)
-        player_dead_rect = player_dead.get_rect(center = ((width/2), (height/2)))
+        player_dead_rect = player_dead.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
         game_over_message = self.game_font.render('Game Over', False, (203,19,13))
-        game_over_message_rect = game_over_message.get_rect(center = ((width/2), 50))
+        game_over_message_rect = game_over_message.get_rect(center = ((WIDTH/2), 50))
         score_massage = self.game_font.render(f'Your score: {self.score}', False, (27,124,55))
-        score_massage_rect = score_massage.get_rect(center = ((width/2), 200))
+        score_massage_rect = score_massage.get_rect(center = ((WIDTH/2), 200))
         game_message = self.game_font.render('Press any key to start', False, (27,124,55))
-        game_message_rect = game_message.get_rect(center = ((width/2), 500))
+        game_message_rect = game_message.get_rect(center = ((WIDTH/2), 500))
 
         run = True
         while run:
@@ -205,15 +208,13 @@ class Game:
         self.main()
 
 pygame.init()
-width = 800
-height = 600
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Aircraft: Fly Forever')
 
 clock = pygame.time.Clock()
 
 bg_surface = pygame.image.load('graphics/background.png').convert_alpha()
-bg_surface = pygame.transform.smoothscale(bg_surface, (width, height))
+bg_surface = pygame.transform.smoothscale(bg_surface, (WIDTH, HEIGHT))
 
 # timer
 obstacle_timer = pygame.USEREVENT + 1

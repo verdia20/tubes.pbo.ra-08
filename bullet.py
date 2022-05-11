@@ -1,7 +1,6 @@
 import pygame
 
-width = 800
-height = 600
+WIDTH = 800
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos, speed):
@@ -22,7 +21,7 @@ class Bullet(pygame.sprite.Sprite):
         self.image = self.bullet_frames[self.bullet_frame_index]
 
     def destroy(self):
-        if self.rect.x > width:
+        if self.rect.x > WIDTH:
             self.kill()
 
     def update(self):

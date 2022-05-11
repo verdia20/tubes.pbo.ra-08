@@ -1,8 +1,8 @@
 import pygame
 from bullet import Bullet
 
-width = 800
-height = 600
+WIDTH = 800
+HEIGHT = 600
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -19,7 +19,7 @@ class Player(pygame.sprite.Sprite):
         self.player_shoot_index = 0
         
         self.image = self.player_frames[self.player_frame_index]
-        self.rect = self.image.get_rect(midbottom = (200, (height/2)))
+        self.rect = self.image.get_rect(midbottom = (200, (HEIGHT/2)))
 
         self.bullet_active = False
         self.active_time = 0
@@ -62,12 +62,12 @@ class Player(pygame.sprite.Sprite):
     def player_constraint(self):
         if self.rect.left < 0:
             self.rect.left = 0
-        if self.rect.right > width:
-            self.rect.right = width
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
         if self.rect.top <= 0:
             self.rect.top = 0
-        if self.rect.bottom > height:
-            self.rect.bottom = height
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT
 
     def animation_state(self):
         keys = pygame.key.get_pressed()

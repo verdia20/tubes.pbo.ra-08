@@ -1,8 +1,7 @@
 import pygame
 from random import randint
 
-width = 800
-height = 600
+HEIGHT = 600
 
 class Misil(pygame.sprite.Sprite):
     def __init__(self):
@@ -14,7 +13,7 @@ class Misil(pygame.sprite.Sprite):
         self.misil_frame_index = 0
         
         self.image = self.misil_frames[self.misil_frame_index]
-        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(50, height)))
+        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(50, HEIGHT)))
         self.vel = randint(4, 7)
 
     def animation_state(self):
