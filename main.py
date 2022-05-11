@@ -55,6 +55,7 @@ class Game:
             self.item.empty()
             self.player.sprite.bullets.empty()
             self.player.sprite.bullet_active = False
+            self.player.sprite.indicator_active = False
             return False
         return True
 
