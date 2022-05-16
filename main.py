@@ -43,7 +43,7 @@ class Game:
         
     def display_score(self):
         score_surf = self.game_font.render(f'Score: {self.score}', False, (64, 64, 64))
-        score_rect = score_surf.get_rect(center = ((WIDTH/2), 50))
+        score_rect = score_surf.get_rect(center = ((WIDTH/2), 30))
         screen.blit(score_surf, score_rect)
 
     def collisions_sprite(self):
@@ -70,8 +70,8 @@ class Game:
     def item_indicator(self):
         if self.player.sprite.indicator_active:
             indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
-            indicator = pygame.transform.smoothscale(indicator, (44, 30))
-            indicator_rect = indicator.get_rect(center = ((50), (HEIGHT-50)))
+            indicator = pygame.transform.smoothscale(indicator, (55, 37))
+            indicator_rect = indicator.get_rect(center = ((WIDTH - 50), (30)))
             screen.blit(indicator, indicator_rect)
 
     def cheat(self):
@@ -170,14 +170,12 @@ class Game:
                 if hit:
                     self.coin_sound.play()
                     self.score+=1
-                self.display_score()
 
                 item_hit = pygame.sprite.spritecollide(self.player.sprite, self.item, True)
                 if item_hit:
                     self.item_sound.play()
                     self.player.sprite.bullet_active = True
                     self.player.sprite.active_time = pygame.time.get_ticks()
-                self.item_indicator()
                 
                 self.player.draw(screen)
                 self.player.update()
@@ -191,6 +189,8 @@ class Game:
                 self.coin.update()
                 self.cloud.draw(screen)
                 self.cloud.update()
+                self.item_indicator()
+                self.display_score()
 
                 if self.collisions_bullet():
                     self.score += 10
