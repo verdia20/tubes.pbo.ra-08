@@ -23,7 +23,7 @@ class Game:
         self.game_active = False
         self.score = 0
 
-        # audio
+        # audio setup
         self.bg_music = pygame.mixer.Sound('audio/airship.flac')
         self.bg_music.set_volume(0.5)
         self.intro_music = pygame.mixer.Sound('audio/happy.mp3')
@@ -41,6 +41,15 @@ class Game:
         self.wind_sound = pygame.mixer.Sound('audio/wind.wav')
         self.wind_sound.set_volume(0.5)
 
+        # game additonal setup
+        self.bg_surface = pygame.image.load('graphics/background.png').convert_alpha()
+        self.bg_surface = pygame.transform.smoothscale(self.bg_surface, (WIDTH, HEIGHT))
+        self.player_stand = pygame.image.load('graphics/player/intro.png').convert_alpha()
+        self.player_stand =  pygame.transform.rotozoom(self.player_stand, 0, 0.45)
+        self.player_stand_rect = self.player_stand.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
+        self.player_dead = pygame.image.load('graphics/player/dead.png').convert_alpha()
+        self.player_dead = pygame.transform.rotozoom(self.player_dead, 0, 0.45)
+        self.player_dead_rect = self.player_dead.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
         self.indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
         self.indicator = pygame.transform.smoothscale(self.indicator, (55, 37))
         self.indicator_rect = self.indicator.get_rect(center = ((WIDTH - 50), (30)))
@@ -95,9 +104,7 @@ class Game:
         game_name_rect = game_name.get_rect(center = ((WIDTH/2), 50))
         game_message = self.game_font.render('Press any key to start', False, (27,124,55))
         game_message_rect = game_message.get_rect(center = ((WIDTH/2), 500))
-        player_stand = pygame.image.load('graphics/player/intro.png').convert_alpha()
-        player_stand =  pygame.transform.rotozoom(player_stand, 0, 0.45)
-        player_stand_rect = player_stand.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
+        
         run = True
         while run:
             for event in pygame.event.get():
@@ -111,14 +118,11 @@ class Game:
             screen.fill('#c0e8ec')
             screen.blit(game_name, game_name_rect)
             screen.blit(game_message, game_message_rect)
-            screen.blit(player_stand, player_stand_rect)
+            screen.blit(self.player_stand, self.player_stand_rect)
             pygame.display.update()
 
     def game_over(self):
         self.game_over_music.play()
-        player_dead = pygame.image.load('graphics/player/dead.png').convert_alpha()
-        player_dead = pygame.transform.rotozoom(player_dead, 0, 0.45)
-        player_dead_rect = player_dead.get_rect(center = ((WIDTH/2), (HEIGHT/2)))
         game_over_message = self.game_font.render('Game Over', False, (203,19,13))
         game_over_message_rect = game_over_message.get_rect(center = ((WIDTH/2), 50))
         score_massage = self.game_font.render(f'Your score: {self.score}', False, (27,124,55))
@@ -143,7 +147,7 @@ class Game:
             screen.blit(game_over_message, game_over_message_rect)
             screen.blit(score_massage, score_massage_rect)
             screen.blit(game_message, game_message_rect)
-            screen.blit(player_dead, player_dead_rect)
+            screen.blit(self.player_dead, self.player_dead_rect)
             pygame.display.update()
 
     def main(self):
@@ -165,7 +169,7 @@ class Game:
                         self.item.add(Item())
 
             if self.game_active:
-                screen.blit(bg_surface, (0, 0))
+                screen.blit(self.bg_surface, (0, 0))
                 
                 hit = pygame.sprite.spritecollide(self.player.sprite, self.coin, True)
                 if hit:
@@ -181,7 +185,6 @@ class Game:
                 self.player.draw(screen)
                 self.player.update()
                 self.player.sprite.bullets.draw(screen)
-
                 self.item.draw(screen)
                 self.item.update()
                 self.misil.draw(screen)
@@ -212,22 +215,15 @@ class Game:
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Aircraft: Fly Forever')
-
 clock = pygame.time.Clock()
-
-bg_surface = pygame.image.load('graphics/background.png').convert_alpha()
-bg_surface = pygame.transform.smoothscale(bg_surface, (WIDTH, HEIGHT))
 
 # timer
 obstacle_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(obstacle_timer, randint(1000, 1500))
-
 coin_timer = pygame.USEREVENT + 2
 pygame.time.set_timer(coin_timer, randint(1000, 1500))
-
 cloud_timer = pygame.USEREVENT + 3
 pygame.time.set_timer(cloud_timer, randint(1500, 2000))
-
 item_timer = pygame.USEREVENT + 4
 pygame.time.set_timer(item_timer, randint(5000, 10000))
 
