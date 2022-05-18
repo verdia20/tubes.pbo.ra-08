@@ -40,6 +40,10 @@ class Game:
         self.item_sound.set_volume(0.5)
         self.wind_sound = pygame.mixer.Sound('audio/wind.wav')
         self.wind_sound.set_volume(0.5)
+
+        self.indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
+        self.indicator = pygame.transform.smoothscale(self.indicator, (55, 37))
+        self.indicator_rect = self.indicator.get_rect(center = ((WIDTH - 50), (30)))
         
     def display_score(self):
         score_surf = self.game_font.render(f'Score: {self.score}', False, (64, 64, 64))
@@ -69,10 +73,7 @@ class Game:
 
     def item_indicator(self):
         if self.player.sprite.indicator_active:
-            indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
-            indicator = pygame.transform.smoothscale(indicator, (55, 37))
-            indicator_rect = indicator.get_rect(center = ((WIDTH - 50), (30)))
-            screen.blit(indicator, indicator_rect)
+            screen.blit(self.indicator, self.indicator_rect)
 
     def cheat(self):
         keys = pygame.key.get_pressed()
