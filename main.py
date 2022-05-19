@@ -62,6 +62,7 @@ class Game:
         screen.blit(score_surf, score_rect)
 
     def high_score_check(self):
+        if os.path.exists('high_score.txt'):
             with open('high_score.txt', 'r') as file:
                 self.high_score = int(file.read())
 
