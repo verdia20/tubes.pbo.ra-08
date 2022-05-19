@@ -1,4 +1,5 @@
 import pygame
+import os
 from sys import exit
 from random import randint
 from player import Player
@@ -22,6 +23,7 @@ class Game:
         self.game_font = pygame.font.Font('font/kenvector_future_thin.ttf', 30)
         self.game_active = False
         self.score = 0
+        self.high_score = 0
 
         # audio setup
         self.bg_music = pygame.mixer.Sound('audio/airship.flac')
@@ -58,6 +60,11 @@ class Game:
         score_surf = self.game_font.render(f'Score: {self.score}', False, (64, 64, 64))
         score_rect = score_surf.get_rect(center = ((WIDTH/2), 30))
         screen.blit(score_surf, score_rect)
+
+    def high_score_check(self):
+        if os.path.exists('score.txt'):
+            with open('score.txt', 'r') as file:
+                self.high_score = int(file.read())
 
     def collisions_sprite(self):
         if pygame.sprite.spritecollide(self.player.sprite, self.misil, False):
@@ -127,6 +134,9 @@ class Game:
         game_over_message_rect = game_over_message.get_rect(center = ((WIDTH/2), 50))
         score_massage = self.game_font.render(f'Your score: {self.score}', False, (27,124,55))
         score_massage_rect = score_massage.get_rect(center = ((WIDTH/2), 200))
+        high_score_font = pygame.font.Font('font/kenvector_future_thin.ttf', 18)
+        high_score_message = high_score_font.render(f'High score: {self.high_score}', False, (27,124,55))
+        high_score_message_rect = high_score_message.get_rect(center = ((WIDTH - 85), 20))
         game_message = self.game_font.render('Press any key to start', False, (27,124,55))
         game_message_rect = game_message.get_rect(center = ((WIDTH/2), 500))
 
@@ -146,6 +156,7 @@ class Game:
             screen.fill('#c0e8ec')
             screen.blit(game_over_message, game_over_message_rect)
             screen.blit(score_massage, score_massage_rect)
+            screen.blit(high_score_message, high_score_message_rect)
             screen.blit(game_message, game_message_rect)
             screen.blit(self.player_dead, self.player_dead_rect)
             pygame.display.update()
@@ -170,6 +181,7 @@ class Game:
 
             if self.game_active:
                 screen.blit(self.bg_surface, (0, 0))
+                self.high_score_check()
                 
                 hit = pygame.sprite.spritecollide(self.player.sprite, self.coin, True)
                 if hit:
@@ -201,6 +213,11 @@ class Game:
                 self.game_active = self.collisions_sprite()
                 self.cheat()
             else:
+                if self.score > self.high_score:
+                    self.high_score = self.score
+                    with open('high_score.txt', 'w') as file:
+                        file.write(str(self.high_score))
+
                 self.bg_music.stop()
                 self.wind_sound.stop()
                 self.game_over()
