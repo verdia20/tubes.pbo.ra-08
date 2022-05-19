@@ -1,7 +1,7 @@
 import pygame
 from random import randint
 
-HEIGHT = 600
+SCREEN_HEIGHT = 600
 
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
@@ -13,7 +13,7 @@ class Coin(pygame.sprite.Sprite):
         self.coin_frame_index = 0
 
         self.image = self.coin_frames[self.coin_frame_index]
-        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, HEIGHT)))
+        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, SCREEN_HEIGHT)))
         self.vel = randint(4, 7)
 
     def animation_state(self):

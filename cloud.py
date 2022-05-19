@@ -1,7 +1,7 @@
 import pygame
 from random import randint
 
-HEIGHT = 600
+SCREEN_HEIGHT = 600
 
 class Cloud(pygame.sprite.Sprite):
     def __init__(self):
@@ -13,7 +13,7 @@ class Cloud(pygame.sprite.Sprite):
         self.cloud_frame_index = 0
 
         self.image = self.cloud_frames[self.cloud_frame_index]
-        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, HEIGHT)))
+        self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, SCREEN_HEIGHT)))
 
     def animation_state(self):
         self.cloud_frame_index += 0.1
