@@ -182,7 +182,7 @@ class Game:
             if self.game_active:
                 screen.blit(self.bg_surface, (0, 0))
                 self.high_score_check()
-                
+
                 hit = pygame.sprite.spritecollide(self.player.sprite, self.coin, True)
                 if hit:
                     self.coin_sound.play()
