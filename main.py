@@ -46,6 +46,10 @@ class Game:
         # game additonal setup
         self.bg_surface = pygame.image.load('graphics/background.png').convert_alpha()
         self.bg_surface = pygame.transform.smoothscale(self.bg_surface, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.intro_bg_surface = pygame.image.load('graphics/intro_bg.png').convert_alpha()
+        self.intro_bg_surface = pygame.transform.smoothscale(self.intro_bg_surface, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.game_over_bg_surface = pygame.image.load('graphics/game_over_bg.png').convert_alpha()
+        self.game_over_bg_surface = pygame.transform.smoothscale(self.game_over_bg_surface, (SCREEN_WIDTH, SCREEN_HEIGHT))
         self.indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
         self.indicator = pygame.transform.smoothscale(self.indicator, (55, 37))
         self.indicator_rect = self.indicator.get_rect(center = (40, 30))
@@ -200,7 +204,7 @@ class Game:
                         self.game_over_music.stop()
                         self.main_menu()
                         
-            screen.fill('#8bf8e3')
+            screen.blit(self.game_over_bg_surface, (0, 0))
             screen.blit(game_over_message, game_over_message_rect)
             screen.blit(score_massage, score_massage_rect)
             screen.blit(high_score_message, high_score_message_rect)
@@ -218,7 +222,7 @@ class Game:
         copyright_rect = copyright.get_rect(center=(115, 585))
         misil = pygame.image.load('graphics/misil/misil0.png').convert_alpha()
         misil = pygame.transform.smoothscale(misil, (83, 45))
-        misil_rect = misil.get_rect(center=(700, 500))
+        misil_rect = misil.get_rect(center=(700, 250))
         coin = pygame.image.load('graphics/coin/Coin0.png').convert_alpha()
         coin = pygame.transform.smoothscale(coin, (69, 63))
         coin_rect = coin.get_rect(center=(100, 200))
@@ -229,7 +233,7 @@ class Game:
         self.intro_music.play(-1)
         run = True
         while run:
-            screen.fill('#c0e8ec')
+            screen.blit(self.intro_bg_surface, (0, 0))
             menu_mouse_pos = pygame.mouse.get_pos()
 
             play_button = Button(image=pygame.image.load("graphics/Button Rect.png"), pos=(400, 375), 
