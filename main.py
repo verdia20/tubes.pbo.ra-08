@@ -7,6 +7,7 @@ from misil import Misil
 from coin import Coin
 from cloud import Cloud
 from item import Item
+from button import Button
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -20,7 +21,6 @@ class Game:
         self.coin = pygame.sprite.Group()
         self.cloud = pygame.sprite.Group()
         self.item = pygame.sprite.Group()
-        self.game_font = pygame.font.Font('font/kenvector_future_thin.ttf', 30)
         self.game_active = False
         self.score = 0
         self.high_score = 0
@@ -46,18 +46,15 @@ class Game:
         # game additonal setup
         self.bg_surface = pygame.image.load('graphics/background.png').convert_alpha()
         self.bg_surface = pygame.transform.smoothscale(self.bg_surface, (SCREEN_WIDTH, SCREEN_HEIGHT))
-        self.player_stand = pygame.image.load('graphics/player/intro.png').convert_alpha()
-        self.player_stand =  pygame.transform.rotozoom(self.player_stand, 0, 0.45)
-        self.player_stand_rect = self.player_stand.get_rect(center = ((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2)))
-        self.player_dead = pygame.image.load('graphics/player/dead.png').convert_alpha()
-        self.player_dead = pygame.transform.rotozoom(self.player_dead, 0, 0.45)
-        self.player_dead_rect = self.player_dead.get_rect(center = ((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2)))
         self.indicator = pygame.image.load('graphics/player/intro.png').convert_alpha()
         self.indicator = pygame.transform.smoothscale(self.indicator, (55, 37))
-        self.indicator_rect = self.indicator.get_rect(center = ((SCREEN_WIDTH - 40), (30)))
+        self.indicator_rect = self.indicator.get_rect(center = (40, 30))
+
+    def get_font(self, size):
+        return pygame.font.Font("font/kenvector_future_thin.ttf", size)
         
     def display_score(self):
-        score_surf = self.game_font.render(f'Score: {self.score}', False, (64, 64, 64))
+        score_surf = self.get_font(25).render(f'Score: {self.score}', False, ('Black'))
         score_rect = score_surf.get_rect(center = ((SCREEN_WIDTH/2), 30))
         screen.blit(score_surf, score_rect)
 
@@ -104,62 +101,6 @@ class Game:
             self.item.empty()
             self.player.sprite.bullets.empty()
             self.player.sprite.bullet_active = False
-
-    def game_intro(self):
-        self.intro_music.play()
-        game_name = self.game_font.render('Aircraft: Fly Forever', False, (27,124,55))
-        game_name_rect = game_name.get_rect(center = ((SCREEN_WIDTH/2), 50))
-        game_message = self.game_font.render('Press any key to start', False, (27,124,55))
-        game_message_rect = game_message.get_rect(center = ((SCREEN_WIDTH/2), 500))
-        
-        run = True
-        while run:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-                if event.type == pygame.KEYDOWN:
-                    self.intro_music.stop()
-                    run = False
-                    self.game_active = True
-            screen.fill('#c0e8ec')
-            screen.blit(game_name, game_name_rect)
-            screen.blit(game_message, game_message_rect)
-            screen.blit(self.player_stand, self.player_stand_rect)
-            pygame.display.update()
-
-    def game_over(self):
-        self.game_over_music.play()
-        game_over_message = self.game_font.render('Game Over', False, (203,19,13))
-        game_over_message_rect = game_over_message.get_rect(center = ((SCREEN_WIDTH/2), 50))
-        score_massage = self.game_font.render(f'Your score: {self.score}', False, (27,124,55))
-        score_massage_rect = score_massage.get_rect(center = ((SCREEN_WIDTH/2), 200))
-        high_score_font = pygame.font.Font('font/kenvector_future_thin.ttf', 18)
-        high_score_message = high_score_font.render(f'High score: {self.high_score}', False, (27,124,55))
-        high_score_message_rect = high_score_message.get_rect(center = ((SCREEN_WIDTH - 85), 20))
-        game_message = self.game_font.render('Press any key to start', False, (27,124,55))
-        game_message_rect = game_message.get_rect(center = ((SCREEN_WIDTH/2), 500))
-
-        run = True
-        while run:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-                if event.type == pygame.KEYDOWN:
-                    self.game_active = True
-                    self.game_over_music.stop()
-                    self.bg_music.play(-1)
-                    self.score = 0
-                    run = False
-            
-            screen.fill('#c0e8ec')
-            screen.blit(game_over_message, game_over_message_rect)
-            screen.blit(score_massage, score_massage_rect)
-            screen.blit(high_score_message, high_score_message_rect)
-            screen.blit(game_message, game_message_rect)
-            screen.blit(self.player_dead, self.player_dead_rect)
-            pygame.display.update()
 
     def main(self):
         self.bg_music.play(-1)
@@ -224,14 +165,111 @@ class Game:
 
             pygame.display.update()
             clock.tick(60)
+
+    def game_over(self):
+        self.game_over_music.play()
+        game_over_message = self.get_font(40).render('Game Over', True, (203,19,13))
+        game_over_message_rect = game_over_message.get_rect(center = ((SCREEN_WIDTH/2), 100))
+        score_massage = self.get_font(25).render(f'Your score: {self.score}', True, ('Black'))
+        score_massage_rect = score_massage.get_rect(center = ((SCREEN_WIDTH/2), 200))
+        high_score_message = self.get_font(18).render(f'High score: {self.high_score}', True, ('Black'))
+        high_score_message_rect = high_score_message.get_rect(center = (700, 20))
+        menu_message = self.get_font(15).render(f'esc to return to main menu', True, ('Black'))
+        menu_message_rect = menu_message.get_rect(center = (140, 20))
+        game_message = self.get_font(25).render('Press space to play again', True, ('Black'))
+        game_message_rect = game_message.get_rect(center = ((SCREEN_WIDTH/2), 500))
+        player_dead = pygame.image.load('graphics/player/dead.png').convert_alpha()
+        player_dead = pygame.transform.rotozoom(player_dead, 0, 0.45)
+        player_dead_rect = player_dead.get_rect(center = ((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2)))
+
+        run = True
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        run = False
+                        self.game_active = True
+                        self.game_over_music.stop()
+                        self.score = 0
+                        self.main()
+                    if event.key == pygame.K_ESCAPE:
+                        run = False
+                        self.game_over_music.stop()
+                        self.main_menu()
+                        
+            screen.fill('#8bf8e3')
+            screen.blit(game_over_message, game_over_message_rect)
+            screen.blit(score_massage, score_massage_rect)
+            screen.blit(high_score_message, high_score_message_rect)
+            screen.blit(menu_message, menu_message_rect)
+            screen.blit(game_message, game_message_rect)
+            screen.blit(player_dead, player_dead_rect)
+            pygame.display.update()
+
+    def main_menu(self):
+        title_text = self.get_font(35).render('Aircraft: Fly Forever', True, ('#cb130d'))
+        title_rect = title_text.get_rect(center = (400, 30))
+        menu_text = self.get_font(35).render("MAIN MENU", True, "Black")
+        menu_rect = menu_text.get_rect(center=(400, 300))
+        copyright = self.get_font(10).render('Copyright © 2022 by Ganbaru Power', True, 'Black')
+        copyright_rect = copyright.get_rect(center=(115, 585))
+        misil = pygame.image.load('graphics/misil/misil0.png').convert_alpha()
+        misil = pygame.transform.smoothscale(misil, (83, 45))
+        misil_rect = misil.get_rect(center=(700, 500))
+        coin = pygame.image.load('graphics/coin/Coin0.png').convert_alpha()
+        coin = pygame.transform.smoothscale(coin, (69, 63))
+        coin_rect = coin.get_rect(center=(100, 200))
+        player_stand = pygame.image.load('graphics/player/intro.png').convert_alpha()
+        player_stand =  pygame.transform.rotozoom(player_stand, 0, 0.45)
+        player_stand_rect = player_stand.get_rect(center = (400, 150))
+        
+        self.intro_music.play(-1)
+        run = True
+        while run:
+            screen.fill('#c0e8ec')
+            menu_mouse_pos = pygame.mouse.get_pos()
+
+            play_button = Button(image=pygame.image.load("graphics/Button Rect.png"), pos=(400, 375), 
+                                text_input="PLAY", font=self.get_font(35), base_color="Black", hovering_color="#baf4fc")
+            quit_button = Button(image=pygame.image.load("graphics/Button Rect.png"), pos=(400, 475), 
+                                text_input="QUIT", font=self.get_font(35), base_color="Black", hovering_color="#baf4fc")
+
+            screen.blit(title_text, title_rect)
+            screen.blit(player_stand, player_stand_rect)
+            screen.blit(menu_text, menu_rect)
+            screen.blit(copyright, copyright_rect)
+            screen.blit(misil, misil_rect)
+            screen.blit(coin, coin_rect)
+
+            for button in [play_button, quit_button]:
+                button.change_color(menu_mouse_pos)
+                button.update(screen)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if play_button.check_for_input(menu_mouse_pos):
+                        run = False
+                        self.intro_music.stop()
+                        self.game_active = True
+                        self.main()
+                    if quit_button.check_for_input(menu_mouse_pos):
+                        pygame.quit()
+                        exit()
+
+            pygame.display.update()
         
     def run(self):
-        self.game_intro()
-        self.main()
+        self.main_menu()
 
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Aircraft: Fly Forever')
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 
 # timer
@@ -242,7 +280,8 @@ pygame.time.set_timer(coin_timer, randint(1000, 1500))
 cloud_timer = pygame.USEREVENT + 3
 pygame.time.set_timer(cloud_timer, randint(1500, 2000))
 item_timer = pygame.USEREVENT + 4
-pygame.time.set_timer(item_timer, randint(5000, 10000))
+pygame.time.set_timer(item_timer, randint(8000, 10000))
 
+# game run
 game = Game()
 game.run()
