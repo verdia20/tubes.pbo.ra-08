@@ -35,17 +35,17 @@ Spasi = menembak laser ke arah rintangan.
 
 **Tampilan Awal Game**
 
-![Tampilan Awal Game](https://ibb.co/wKq6Vt3)
+![Tampilan Main Menu](https://i.ibb.co/y8Cst2G/1.png)
 
 **Tampilan Gameplay**
 
-![Tampilan Gameplay](https://i.ibb.co/wLZStf3/doc2.png)
+![Tampilan Gameplay](https://i.ibb.co/8BK2RNY/2.png)
 
-![Tampilan Gameplay laser](https://i.ibb.co/S5Yy7yk/doc3.png)
+![Tampilan Gameplay Menembak](https://i.ibb.co/whg32zN/3.png)
 
-**Tampilan Gameover**
+**Tampilan Game Over**
 
-![Tampilan Gameover](https://i.ibb.co/gTF2jGX/doc4.png)
+![Tampilan Game Over](https://i.ibb.co/x7HmmNg/4.png)
 
 ## UML Class Diagram
 
