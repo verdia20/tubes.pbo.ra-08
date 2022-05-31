@@ -32,6 +32,8 @@ D = menggerakkan pesawat ke arah kanan.
 
 Space = menembakkan peluru ke arah rintangan.
 
+Jika game over, maka player bisa menekan tombol space untuk memulai kembali permainan atau tombol esc untuk kembali ke main menu.
+
 ## Screenshots
 
 **Tampilan Awal Game**
