@@ -1,6 +1,6 @@
 # Aircraft: Fly Forever
 
-Proyek ini adalah proyek pembuatan sebuah game yang menggunakan modul Pygame.
+Proyek ini adalah proyek pembuatan sebuah game yang menggunakan modul pygame.
 
 Game ini bertemakan survival. Player dalam game ini berupa sebuah pesawat dan game ini bertujuan menghindari rintangan berupa misil dan berusaha mendapatkan coin sebanyak-banyaknya untuk menambah score.
 
@@ -10,7 +10,7 @@ Player bisa mengambil item untuk mengaktifkan kemampuan menembak sehingga player
 
 Pada pembuatan game ini, kami menggunakan beberapa library untuk mendukung pembuatan game ini berjalan dengan baik.
 
-1. Modul Pygame
+1. Modul pygame
 2. Modul os
 3. Modul sys fungsi 'exit'
 4. Modul random fungsi 'randint'
