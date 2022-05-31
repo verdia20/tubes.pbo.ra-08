@@ -29,13 +29,13 @@ S = menggerakkan pesawat ke arah bawah.
 
 D = menggerakkan pesawat ke arah kanan.
 
-Spasi = menembak laser ke arah rintangan.
+Spasi = menembakkan bullet ke arah rintangan.
 
 ## Screenshots
 
 **Tampilan Awal Game**
 
-![Tampilan Main Menu](https://i.ibb.co/y8Cst2G/1.png)
+![Tampilan Main Menu](https://i.ibb.co/q0dhhtd/1.png)
 
 **Tampilan Gameplay**
 
@@ -55,6 +55,11 @@ UML Class diagram yang kami gunakan dalam game ini seperti berikut.
 
 ## Authors
 
-- [@verdia20](https://www.github.com/verdia20)
-
-- [@josray10](https://www.github.com/josray10)
+|            Nama            |    NIM    |                      Github                       |
+| :------------------------: | :-------: | :-----------------------------------------------: |
+|          Ferdy. M          | 120140098 |      [verdia20](https://github.com/verdia20)      |
+| Muhammad Duta Faturrahman  | 120140065 |   [F4turrahman](https://github.com/F4turrahman)   |
+| Jossy Raya Gopasda Saragih | 120140073 |     [josray10](https://github.com/Zkaaaaaaa)      |
+|       Imam Windharko       | 120140063 |     [windharko](https://github.com/windharko)     |
+|     M. Al Fairuz Swari     | 120140102 | [alfairuzswari](https://github.com/alfairuzswari) |
+| Andro Sigit Kurniawan Jati | 120140081 |      [andro081](https://github.com/andro081)      |
