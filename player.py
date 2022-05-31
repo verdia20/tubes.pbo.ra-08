@@ -35,6 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.bullets = pygame.sprite.Group()
 
     def player_input(self):
+        # pergerakan player sesuai input keyboard
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
             self.rect.move_ip(0, -5)
@@ -44,7 +45,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.move_ip(-5, 0)
         if keys[pygame.K_d]:
             self.rect.move_ip(5, 0)
-
+        # menggecek kemampuan menembak dari player
         if self.bullet_active:
             self.indicator_active = True
             if keys[pygame.K_SPACE] and self.ready:
@@ -59,6 +60,7 @@ class Player(pygame.sprite.Sprite):
             self.bullet_active = True
             self.active_time = pygame.time.get_ticks()
             
+    # batasan pergerakan player di layar game
     def player_constraint(self):
         if self.rect.left < 0:
             self.rect.left = 0
@@ -69,6 +71,7 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom > SCREEN_HEIGHT:
             self.rect.bottom = SCREEN_HEIGHT
 
+    # animasi player saat terbang dan menembak
     def animation_state(self):
         keys = pygame.key.get_pressed()
         if self.bullet_active and keys[pygame.K_SPACE]:
@@ -82,18 +85,21 @@ class Player(pygame.sprite.Sprite):
                 self.player_frame_index = 0
             self.image = self.player_frames[int(self.player_frame_index)]
 
+    # menonaktifkan kemampuan menembak
     def deactivate(self):
         bullet_current_time = pygame.time.get_ticks()
         if bullet_current_time - self.active_time >= 5000:
             self.bullet_active = False
             self.indicator_active = False
 
+    # mengatur cooldown untuk menembak
     def recharge(self):
         if not self.ready:
             current_time = pygame.time.get_ticks()
             if current_time - self.bullet_time >= self.bullet_cooldown:
                 self.ready = True
 
+    # menembakkan bullet
     def shoot_bullet(self):
         self.bullets.add(Bullet(self.rect.center, 5))
 

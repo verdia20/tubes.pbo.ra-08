@@ -14,12 +14,14 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft = pos)
         self.speed = speed
     
+    # animasi bullet
     def animation_state(self):
         self.bullet_frame_index += 1
         if self.bullet_frame_index >= len(self.bullet_frames):
             self.bullet_frame_index = 0
         self.image = self.bullet_frames[self.bullet_frame_index]
 
+    # menghapus bullet jika sudah keluar layar
     def destroy(self):
         if self.rect.x > SCREEN_WIDTH:
             self.kill()

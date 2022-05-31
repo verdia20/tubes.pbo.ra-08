@@ -16,12 +16,14 @@ class Coin(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, SCREEN_HEIGHT)))
         self.vel = randint(4, 7)
 
+    # animasi coin
     def animation_state(self):
         self.coin_frame_index += 1
         if self.coin_frame_index >= len(self.coin_frames):
             self.coin_frame_index = 0
         self.image = self.coin_frames[self.coin_frame_index]
 
+    # menghapus coin jika sudah keluar layar
     def destroy(self):
         if self.rect.left <= -100:
             self.kill()
