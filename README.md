@@ -1,25 +1,26 @@
 # Aircraft: Fly Forever
 
-Proyek ini adalah proyek pembuatan sebuah game yang menggunakan library pygame.
+Proyek ini adalah proyek pembuatan sebuah game yang menggunakan modul Pygame.
 
-Game ini bertemakan survival. Player dalam game ini berupa pesawat, dan game ini bertujuan menghindari rintangan berupa misil dan berusaha mendapatkan coin sebanyak-banyaknya untuk meningkatkan score.
+Game ini bertemakan survival. Player dalam game ini berupa sebuah pesawat dan game ini bertujuan menghindari rintangan berupa misil dan berusaha mendapatkan coin sebanyak-banyaknya untuk menambah score.
 
 Player bisa mengambil item untuk mengaktifkan kemampuan menembak sehingga player bisa menembak misil dan mendapatkan bonus score.
 
-## Library
+## Dependensi Paket (Library) yang Dibutuhkan Untuk Menjalankan Aplikasi
 
 Pada pembuatan game ini, kami menggunakan beberapa library untuk mendukung pembuatan game ini berjalan dengan baik.
 
-1. Pertama kami menggunaakan library 'sys' fungsi 'exit' untuk menutup aplikasi pygame.
-2. Kami juga menggunakan library 'random' fungsi 'randint' untuk menghasilkan bilangan random integer.
+1. Modul Pygame
+2. Modul os
+3. Modul sys fungsi 'exit'
+4. Modul random fungsi 'randint'
 
 ## Cara Bermain (How To Play)
 
-Permainan ini dimainkan menggunakan tombol keyboard. Tujuan permainan adalah untuk menghindari rintangan misil dan meraih score sebanyak-banyaknya.
-Pada awal permainan kita diperlihatkan dengan tampilan awal dari game tersebut dan kita diperintahkan untuk menekan sembarang tombol keyboard untuk memulai permainan.
+Permainan ini dimainkan menggunakan tombol keyboard. Tujuan permainan adalah untuk menghindari rintangan misil dan menambah score sebanyak-banyaknya.
+Pada awal permainan diperlihatkan dengan tampilan main menu dari game tersebut dan bisa mengklik tombol Play untuk memulai permainan atau tombol Quit untuk keluar permainan.
 
-Tombol keyboard yang digunakan saat bermain adalah tombol W A S D atau tombol panah untuk menggerakkan pesawat.
-Selain itu tombol spasi digunakan untuk menembak rintangan atau misil.
+Tombol keyboard yang digunakan saat bermain adalah tombol W A S D untuk menggerakkan pesawat. Selain itu tombol space digunakan untuk menembak rintangan atau misil.
 
 W = menggerakkan pesawat ke arah atas.
 
@@ -29,7 +30,7 @@ S = menggerakkan pesawat ke arah bawah.
 
 D = menggerakkan pesawat ke arah kanan.
 
-Spasi = menembakkan bullet ke arah rintangan.
+Space = menembakkan peluru ke arah rintangan.
 
 ## Screenshots
 
