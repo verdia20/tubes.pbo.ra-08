@@ -1,10 +1,10 @@
-# Aircraft: Fly Forever
+# Aircraft: Fly Forever ✈️
 
 Proyek ini adalah proyek pembuatan sebuah game yang menggunakan modul pygame.
 
-Game ini bertemakan survival. Player dalam game ini berupa sebuah pesawat dan game ini bertujuan menghindari rintangan berupa misil dan berusaha mendapatkan coin sebanyak-banyaknya untuk menambah score.
+Game ini bertemakan survival. Player dalam game ini berupa sebuah pesawat dan game ini bertujuan menghindari rintangan berupa misil dan berusaha mendapatkan item coin sebanyak-banyaknya untuk menambah score.
 
-Player bisa mengambil item untuk mengaktifkan kemampuan menembak sehingga player bisa menembak misil dan mendapatkan bonus score.
+Player bisa mengambil item bintang (⭐) untuk mengaktifkan kemampuan menembak selama 5 detik sehingga player bisa menembak misil dan mendapatkan bonus score.
 
 ## Dependensi Paket (Library) yang Dibutuhkan Untuk Menjalankan Aplikasi
 
@@ -15,9 +15,9 @@ Pada pembuatan game ini, kami menggunakan beberapa library untuk mendukung pembu
 3. Modul sys fungsi 'exit'
 4. Modul random fungsi 'randint'
 
-## Cara Bermain (How To Play)
+## Cara Bermain (How To Play) 🎮
 
-Permainan ini dimainkan menggunakan tombol keyboard. Tujuan permainan adalah untuk menghindari rintangan misil dan menambah score sebanyak-banyaknya.
+Permainan ini dimainkan menggunakan tombol keyboard.
 Pada awal permainan diperlihatkan dengan tampilan main menu dari game tersebut dan bisa mengklik tombol Play untuk memulai permainan atau tombol Quit untuk keluar permainan.
 
 Tombol keyboard yang digunakan saat bermain adalah tombol W A S D untuk menggerakkan pesawat. Selain itu tombol space digunakan untuk menembak rintangan atau misil.
@@ -50,11 +50,11 @@ Jika game over, maka player bisa menekan tombol space untuk memulai kembali perm
 
 ![Tampilan Game Over](https://i.ibb.co/x7HmmNg/4.png)
 
-## UML Class Diagram
+## UML Class Diagram 
 
 Untuk melihat UML Class Diagram game ini klik [di sini](https://github.com/verdia20/tubes.pbo.ra-08/blob/main/UML%20Class%20Diagram.png).
 
-## Kontributor Pengembangan Aplikasi
+## Kontributor Pengembangan Aplikasi 👯
 
 |            Nama            |    NIM    |                      Github                       |
 | :------------------------: | :-------: | :-----------------------------------------------: |
