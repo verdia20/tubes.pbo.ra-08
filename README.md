@@ -8,7 +8,7 @@ Player bisa mengambil item untuk mengaktifkan kemampuan menembak sehingga player
 
 ## Dependensi Paket (Library) yang Dibutuhkan Untuk Menjalankan Aplikasi
 
-Pada pembuatan game ini, kami menggunakan beberapa library untuk mendukung pembuatan game ini berjalan dengan baik.
+Pada pembuatan game ini, kami menggunakan beberapa library untuk mendukung pembuatan game ini berjalan dengan baik, diantaranya:
 
 1. Modul pygame
 2. Modul os
