@@ -8,6 +8,7 @@ class Item(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load('graphics/item/item.png').convert_alpha()
         self.rect = self.image.get_rect(bottomright = (randint(1000, 1200), randint(60, SCREEN_HEIGHT)))
+        self.vel = randint(4, 7)
 
     # menghapus misil jika sudah keluar layar
     def destroy(self):
@@ -15,5 +16,5 @@ class Item(pygame.sprite.Sprite):
             self.kill()
 
     def update(self):
-        self.rect.x -= 5
+        self.rect.x -= self.vel
         self.destroy()
