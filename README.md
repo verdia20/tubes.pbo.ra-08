@@ -54,7 +54,7 @@ Jika game over, maka player bisa menekan tombol space untuk memulai kembali perm
 
 UML Class diagram yang kami gunakan dalam game ini seperti berikut.
 
-[!UML Class Diagram](https://github.com/verdia20/tubes.pbo.ra-08/blob/main/UML%20Class%20Diagram.png)
+[UML Class Diagram](https://github.com/verdia20/tubes.pbo.ra-08/blob/main/UML%20Class%20Diagram.png)
 
 ## Kontributor Pengembangan Aplikasi
 
